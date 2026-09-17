@@ -129,7 +129,7 @@ if audio_source:
 
         except Exception as exc:
             # st.error(f"Transcription failed: {exc}")
-            st.error(f"Transcription failed: Paisalevadisthad ra???Fukat la service kavalna...Asale nenu Ganta Rukki ni.")
+            st.error(f"Transcription failed: Paisal evadisthad ra??? Fukat la service kavalna...Asale nenu Ganta Rukki ni.")
 
         finally:
             try:
