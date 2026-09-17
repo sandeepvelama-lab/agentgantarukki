@@ -6,40 +6,67 @@ import streamlit as st
 from openai import OpenAI
 
 st.set_page_config(
-    page_title="Audio to Text - OpenAI",
+    page_title="Agent Rukki",
     page_icon="🎙️",
     layout="centered",
 )
 
-st.title("🎙️ Audio to Text")
-st.caption("Upload an audio file or record audio, then transcribe it with the OpenAI Python SDK.")
+st.title("🎙️ This is Agent Ganta Rukki")
+st.caption("Upload an audio file or record audio, I can transcribe it for you.")
+
+st.markdown(
+    """
+    <style>
+    /* Remove sidebar padding */
+    [data-testid="stSidebar"] > div:first-child {
+        padding-left: 0;
+        padding-right: 0;
+        padding-top: 0;
+    }
+
+    /* Make image fill sidebar width */
+    [data-testid="stSidebar"] img {
+        width: 100% !important;
+        display: block;
+    }
+    </style>
+    """,
+    unsafe_allow_html=True
+)
 
 with st.sidebar:
-    st.header("Settings")
-    model = "gpt-5.5" # "gpt-4o-mini-transcribe"
-    language = ""
-    # model = st.selectbox(
-    #     "Transcription model",
-    #     ["gpt-4o-mini-transcribe", "gpt-4o-transcribe", "whisper-1"],
-    #     index=0,
-    # )
-    # language = st.text_input(
-    #     "Language (optional)",
-    #     value="",
-    #     placeholder="e.g. en",
-    #     help="ISO-639-1 language code. Leaving this blank lets the transcription model detect it.",
-    # )
-    # api_key = st.text_input(
-    #     "OpenAI API key",
-    #     value="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", # os.getenv("OPENAI_API_KEY", ""),
-    #     type="password",
-    #     help="For local use you can enter it here, or set OPENAI_API_KEY in your environment.",
-    # )
+    # st.header("Agent")
+    st.markdown(
+        """
+        <style>
+        /* Make the sidebar use the full screen height */
+        [data-testid="stSidebar"] > div:first-child {
+            padding: 0 !important;
+            height: 100vh !important;
+        }
 
-# if not api_key:
-#     st.info("Enter your OpenAI API key in the sidebar, or set the OPENAI_API_KEY environment variable.")
-#     st.stop()
-
+        /* Make the image fill the entire sidebar */
+        [data-testid="stSidebar"] img {
+            width: 100% !important;
+            height: 100vh !important;
+            object-fit: fill !important;
+            display: block;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
+    st.image("Anji.jpg", use_container_width=True)
+    # st.image(
+    #     "Anji.jpg",
+    #     use_container_width=True
+    # )
+    # model = "gpt-5.5" # "gpt-4o-mini-transcribe"
+    # language = ""
+model = "gpt-5.5" # "gpt-4o-mini-transcribe"
+language = ""
 client = OpenAI(api_key="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")
 
 st.subheader("1. Choose audio")
@@ -101,7 +128,8 @@ if audio_source:
             )
 
         except Exception as exc:
-            st.error(f"Transcription failed: {exc}")
+            # st.error(f"Transcription failed: {exc}")
+            st.error(f"Transcription failed: Paisalevadisthad ra???Fukat la service kavalna...Asale nenu Ganta Rukki ni.")
 
         finally:
             try:
@@ -110,4 +138,4 @@ if audio_source:
                 pass
 
 st.divider()
-st.caption("Your audio is sent to the OpenAI API for transcription. Keep your API key private.")
+# st.caption("Your audio is sent to the OpenAI API for transcription. Keep your API key private.")
